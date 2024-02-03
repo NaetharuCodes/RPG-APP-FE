@@ -1,26 +1,49 @@
 import { Button, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import CharacterSheet, {
+  characterDataType,
+} from "../../components/CharacterSheet/CharacterSheet";
+import { useEffect, useState } from "react";
 
 const CharacterMaker = () => {
+  const [characterData, setCharacterData] = useState<characterDataType | null>(
+    null
+  );
+
   const form = useForm({
     initialValues: {
       theme: "",
       name: "",
       species: "",
-      grender: "",
+      gender: "",
       age: "",
       role: "",
-      history: "",
       appearance: "",
+      history: "",
     },
   });
 
+  useEffect(() => {
+    setCharacterData({
+      theme: "Cyberpunk",
+      name: "Case",
+      species: "Human",
+      gender: "Male",
+      age: "22",
+      role: "Cyber Jocky",
+      appearance: "A skinny man dressed in simple clothing.",
+      history:
+        "Case was born in Seattle. He worked as a hacker for a criminal organization stealing secrets from corps. But he chose to double cross them and paid the price...",
+    });
+  }, []);
+
   return (
-    <div>
+    <>
       <h1>Character Maker Page</h1>
       <p>
-        Welcome to the Character Maker Page. Fill out the form below to create
-        your character.
+        Fill out this form to have your character built. No need to add in all
+        the details now. Just fill out the parts you want and the AI will ad lib
+        the rest.
       </p>
       <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <TextInput label="Theme" {...form.getInputProps("theme")} />
@@ -29,11 +52,17 @@ const CharacterMaker = () => {
         <TextInput label="Gender" {...form.getInputProps("gender")} />
         <TextInput label="Age" {...form.getInputProps("age")} />
         <TextInput label="Role" {...form.getInputProps("role")} />
-        <TextInput label="History" {...form.getInputProps("history")} />
         <TextInput label="Appearance" {...form.getInputProps("appearance")} />
-        <Button type="submit">Submit</Button>
+        <TextInput label="History" {...form.getInputProps("history")} />
+
+        <Button style={{ marginTop: 20 }} type="submit">
+          Submit
+        </Button>
       </form>
-    </div>
+      <section>
+        {characterData && <CharacterSheet data={characterData} />}
+      </section>
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import { AppShell, MantineProvider, Text } from "@mantine/core";
 import { theme } from "./theme.ts";
-import CharacterMaker from "./pages/Characters/CharacterMaker";
 import "@mantine/core/styles.css";
+import CharacterMaker from "./pages/Characters/CharacterMaker.tsx";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <AppShell.Header>
           <Text>RPG App</Text>
         </AppShell.Header>
-        <AppShell.Main>
+        <AppShell.Main style={{ padding: 200 }}>
           <CharacterMaker />
         </AppShell.Main>
       </AppShell>
