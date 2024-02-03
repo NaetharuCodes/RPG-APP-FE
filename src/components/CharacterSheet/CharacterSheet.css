@@ -1,0 +1,19 @@
+#character-sheet-container {
+  background-color: rgb(59, 59, 59);
+  color: rgb(31, 31, 31);
+  padding: 20px;
+}
+
+#character-sheet-container .mantine-Title-root {
+  color: rgb(196, 190, 190);
+}
+
+#character-sheet-container .mantine-Text-root {
+  background-color: rgb(138, 138, 138);
+  margin-top: 10px;
+  padding: 10px;
+}
+
+#character-sheet-container strong {
+  color: rgb(11, 11, 11);
+}
