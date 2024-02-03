@@ -1,11 +1,19 @@
-import { MantineProvider } from "@mantine/core";
+import { AppShell, MantineProvider, Text } from "@mantine/core";
 import { theme } from "./theme.ts";
 import CharacterMaker from "./pages/Characters/CharacterMaker";
+import "@mantine/core/styles.css";
 
 function App() {
   return (
     <MantineProvider theme={theme}>
-      <CharacterMaker />
+      <AppShell header={{ height: 60 }}>
+        <AppShell.Header>
+          <Text>RPG App</Text>
+        </AppShell.Header>
+        <AppShell.Main>
+          <CharacterMaker />
+        </AppShell.Main>
+      </AppShell>
     </MantineProvider>
   );
 }
