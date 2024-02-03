@@ -1,11 +1,13 @@
-
-import './App.css'
+import { MantineProvider } from "@mantine/core";
+import { theme } from "./theme.ts";
+import CharacterMaker from "./pages/Characters/CharacterMaker";
 
 function App() {
-
   return (
-    <p>Welcome to RPG App</p>
-  )
+    <MantineProvider theme={theme}>
+      <CharacterMaker />
+    </MantineProvider>
+  );
 }
 
-export default App
+export default App;
