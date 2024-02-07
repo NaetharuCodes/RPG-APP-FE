@@ -5,16 +5,17 @@ import CharacterMaker from "./pages/Characters/CharacterMaker.tsx";
 import HomePage from "./pages/General/Homepage.tsx";
 import ItemMaker from "./pages/Items/ItemMaker.tsx";
 import LocationMaker from "./pages/Locations/LocationMaker.tsx";
+import Header from "./components/AppShell/Header.tsx";
 
 function App() {
   return (
     <BrowserRouter>
       <MantineProvider theme={theme}>
         <AppShell header={{ height: 60 }}>
-          <AppShell.Header>
-            <Text>RPG App</Text>
+          <AppShell.Header withBorder className="flex flex-between">
+            <Header />
           </AppShell.Header>
-          <AppShell.Main style={{ padding: 200 }}>
+          <AppShell.Main className="margin-large-h">
             <Routes>
               <Route index element={<HomePage />} />
               <Route path="/character/maker" element={<CharacterMaker />} />

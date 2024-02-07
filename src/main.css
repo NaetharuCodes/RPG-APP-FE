@@ -1,0 +1,62 @@
+/* FLEXBOX STYLES */
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Width */
+
+.width-full {
+  width: 100%;
+}
+
+/* Margins */
+.margin-small {
+  margin: 6px;
+}
+
+.margin-small-h {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.margin-large {
+  margin: 12px;
+}
+
+.margin-large-h {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+/* Padding */
+
+.padding-small {
+  padding: 6px;
+}
+
+.padding-large {
+  padding: 12px;
+}
+
+/* Decoration */
+
+.decoration-none {
+  text-decoration: none;
+}
+
+/* Lists */
+
+.list-style-none {
+  list-style: none;
+}
