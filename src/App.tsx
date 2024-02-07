@@ -1,4 +1,4 @@
-import { AppShell, MantineProvider, Text } from "@mantine/core";
+import { AppShell, MantineProvider } from "@mantine/core";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { theme } from "./theme.ts";
 import CharacterMaker from "./pages/Characters/CharacterMaker.tsx";
@@ -6,6 +6,7 @@ import HomePage from "./pages/General/Homepage.tsx";
 import ItemMaker from "./pages/Items/ItemMaker.tsx";
 import LocationMaker from "./pages/Locations/LocationMaker.tsx";
 import Header from "./components/AppShell/Header.tsx";
+import Gallery from "./pages/Gallery/Gallery.tsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/character/maker" element={<CharacterMaker />} />
               <Route path="/item/maker" element={<ItemMaker />} />
               <Route path="/location/maker" element={<LocationMaker />} />
+              <Route path="/gallery" element={<Gallery />} />
             </Routes>
           </AppShell.Main>
         </AppShell>

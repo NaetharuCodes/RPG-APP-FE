@@ -23,6 +23,11 @@ const Header = () => {
             Items
           </a>
         </li>
+        <li className="list-style-none margin-small-h">
+          <a href="/gallery" className="decoration-none">
+            Gallery
+          </a>
+        </li>
       </ul>
     </div>
   );
