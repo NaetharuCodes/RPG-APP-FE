@@ -7,8 +7,6 @@ const ThumbnailCard = () => {
       href="/viewer:id"
       style={{
         margin: 20,
-        border: "2px solid grey",
-        borderRadius: 10,
       }}
     >
       <Card
