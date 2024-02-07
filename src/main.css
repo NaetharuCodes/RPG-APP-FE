@@ -1,4 +1,4 @@
-/* FLEXBOX STYLES */
+/* Flexbox Styles */
 
 .flex {
   display: flex;
@@ -59,4 +59,16 @@
 
 .list-style-none {
   list-style: none;
+}
+
+/* FONTS */
+
+.font-small {
+  font-family: sans-serif;
+  font-size: 10;
+}
+
+.font-medium {
+  font-family: sans-serif;
+  font-size: 16;
 }
