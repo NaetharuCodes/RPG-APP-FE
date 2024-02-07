@@ -3,14 +3,25 @@ import { useForm } from "@mantine/form";
 import CharacterSheet, {
   characterDataType,
 } from "../../components/CharacterSheet/CharacterSheet";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+interface CharacterFormData {
+  theme: string;
+  name: string;
+  species: string;
+  gender: string;
+  age: string;
+  role: string;
+  appearance: string;
+  history: string;
+}
 
 const CharacterMaker = () => {
   const [characterData, setCharacterData] = useState<characterDataType | null>(
     null
   );
 
-  const form = useForm({
+  const form = useForm<CharacterFormData>({
     initialValues: {
       theme: "",
       name: "",
@@ -23,19 +34,18 @@ const CharacterMaker = () => {
     },
   });
 
-  useEffect(() => {
-    setCharacterData({
-      theme: "Cyberpunk",
-      name: "Case",
-      species: "Human",
-      gender: "Male",
-      age: "22",
-      role: "Cyber Jocky",
-      appearance: "A skinny man dressed in simple clothing.",
-      history:
-        "Case was born in Seattle. He worked as a hacker for a criminal organization stealing secrets from corps. But he chose to double cross them and paid the price...",
-    });
-  }, []);
+  const handleSubmit = (values: CharacterFormData) => {
+    fetch("http://localhost:3000/api/character", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then((response) => response.json())
+      .then((data) => setCharacterData(data.characterData))
+      .catch((error) => console.error("Error: ", error));
+  };
 
   return (
     <>
@@ -45,7 +55,7 @@ const CharacterMaker = () => {
         the details now. Just fill out the parts you want and the AI will ad lib
         the rest.
       </p>
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
         <TextInput label="Theme" {...form.getInputProps("theme")} />
         <TextInput label="Character Name" {...form.getInputProps("name")} />
         <TextInput label="Species" {...form.getInputProps("species")} />
