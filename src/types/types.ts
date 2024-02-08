@@ -8,3 +8,8 @@ export type characterDataType = {
   appearance: string;
   history: string;
 };
+
+export type Link = {
+  href: string;
+  text: string;
+};

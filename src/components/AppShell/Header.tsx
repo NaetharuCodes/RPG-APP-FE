@@ -1,33 +1,22 @@
-const Header = () => {
+import { Link } from "../../types/types";
+
+interface HeaderProps {
+  brand: string;
+  links: Link[];
+}
+
+const Header = ({ brand, links }: HeaderProps) => {
   return (
     <div className="flex flex-between width-full margin-large">
-      <div>RPG APP</div>
+      <div>{brand}</div>
       <ul className="flex flex-between">
-        <li className="list-style-none margin-small-h">
-          <a href="/" className="decoration-none">
-            Home
-          </a>
-        </li>
-        <li className="list-style-none margin-small-h">
-          <a href="/character/maker" className="decoration-none">
-            Characters
-          </a>
-        </li>
-        <li className="list-style-none margin-small-h">
-          <a href="/location/maker" className="decoration-none">
-            Locations
-          </a>
-        </li>
-        <li className="list-style-none margin-small-h">
-          <a href="/item/maker" className="decoration-none">
-            Items
-          </a>
-        </li>
-        <li className="list-style-none margin-small-h">
-          <a href="/gallery" className="decoration-none">
-            Gallery
-          </a>
-        </li>
+        {links.map((link) => (
+          <li className="list-style-none margin-small-h">
+            <a href={link.href} className="decoration-none">
+              {link.text}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );
