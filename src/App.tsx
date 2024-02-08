@@ -7,6 +7,7 @@ import ItemMaker from "./pages/Items/ItemMaker.tsx";
 import LocationMaker from "./pages/Locations/LocationMaker.tsx";
 import Header from "./components/AppShell/Header.tsx";
 import Gallery from "./pages/Gallery/Gallery.tsx";
+import TableView from "./pages/TableView/TableView.tsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/item/maker" element={<ItemMaker />} />
               <Route path="/location/maker" element={<LocationMaker />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/table" element={<TableView />} />
             </Routes>
           </AppShell.Main>
         </AppShell>
