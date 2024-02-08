@@ -49,6 +49,11 @@
   padding: 12px;
 }
 
+.padding-large-v {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
 /* Decoration */
 
 .decoration-none {
