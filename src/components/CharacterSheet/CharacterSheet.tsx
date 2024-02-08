@@ -1,16 +1,6 @@
 import { Box, Text, Title } from "@mantine/core";
 import "./CharacterSheet.css";
-
-export type characterDataType = {
-  theme: string;
-  name: string;
-  species: string;
-  gender: string;
-  age: string;
-  role: string;
-  appearance: string;
-  history: string;
-};
+import { characterDataType } from "../../types/characterTypes";
 
 interface CharacterSheetProps {
   data: characterDataType;
