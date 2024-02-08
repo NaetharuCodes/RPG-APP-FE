@@ -1,7 +1,9 @@
-import { Title, Grid, Group, Button } from "@mantine/core";
-import ThumbnailCard from "../../components/ThumbnailCard/ThumbnailCard";
+import { Title, Grid, Group } from "@mantine/core";
 import { useState } from "react";
 import { Category } from "../../enums/categories";
+import ThumbnailCard from "../../components/ThumbnailCard/ThumbnailCard";
+import GalleryButton from "../../components/GalleryButton/GalleryButton";
+import "./Gallery.css";
 
 const Gallery = () => {
   const [filterCategories, setFilterCategories] = useState({
@@ -11,7 +13,6 @@ const Gallery = () => {
   });
 
   const handleToggleCategory = (category: Category): void => {
-    console.log(category);
     setFilterCategories((prevCategories) => ({
       ...prevCategories,
       [category]: !prevCategories[category],
@@ -34,19 +35,27 @@ const Gallery = () => {
   ];
 
   return (
-    <div>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <Title>This is the Gallery</Title>
 
-      <Group>
-        <Button onClick={() => handleToggleCategory(Category.Character)}>
-          Toggle View Characters
-        </Button>
-        <Button onClick={() => handleToggleCategory(Category.Item)}>
-          Toggle View Items
-        </Button>
-        <Button onClick={() => handleToggleCategory(Category.Location)}>
-          Toggle View Locations
-        </Button>
+      <Group id="gallery-buttons">
+        <GalleryButton
+          onClick={() => handleToggleCategory(Category.Character)}
+          text="Toggle View Characters"
+          status={filterCategories.character}
+        />
+        <GalleryButton
+          onClick={() => handleToggleCategory(Category.Item)}
+          text="Toggle View Items"
+          status={filterCategories.item}
+        />
+        <GalleryButton
+          onClick={() => handleToggleCategory(Category.Location)}
+          text="Toggle View Locations"
+          status={filterCategories.location}
+        />
       </Group>
 
       <Grid gutter="lg" justify="flex-start" align="flex-start">
