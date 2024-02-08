@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import CharacterSheet from "../../components/CharacterSheet/CharacterSheet";
 import { MantineProvider } from "@mantine/core";
-import { characterDataType } from "../../types/characterTypes";
+import { characterDataType } from "../../types/types";
 
 const characterSheetTestData: characterDataType = {
   theme: "Test Theme",
