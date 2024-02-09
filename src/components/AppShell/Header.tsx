@@ -8,7 +8,10 @@ interface HeaderProps {
 const Header = ({ brand, links }: HeaderProps) => {
   return (
     <div className="flex flex-between width-full margin-large">
-      <div>{brand}</div>
+      <a href="/" className="decoration-none">
+        <div>{brand}</div>
+      </a>
+
       <ul className="flex flex-between">
         {links.map((link) => (
           <li key={link.href} className="list-style-none margin-small-h">
