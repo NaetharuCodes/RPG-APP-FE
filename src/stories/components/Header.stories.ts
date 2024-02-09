@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import "../../main.css";
-
 import Header from "../../components/AppShell/Header";
-import { Center } from "@mantine/core";
+import "../../main.css";
 
 const meta = {
   title: "Components/Appshell/Header",
