@@ -9,6 +9,13 @@ export type characterDataType = {
   history: string;
 };
 
+export type locationDataType = {
+  theme: string;
+  name: string;
+  appearance: string;
+  history: string;
+};
+
 export type Link = {
   href: string;
   text: string;
