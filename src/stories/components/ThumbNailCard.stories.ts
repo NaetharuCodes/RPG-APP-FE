@@ -14,23 +14,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const CharacterCard: Story = {
+export const Card: Story = {
   args: {
     name: "Sample Card",
     category: Category.Character,
-  },
-};
-
-export const ItemCard: Story = {
-  args: {
-    name: "Sample Card",
-    category: Category.Item,
-  },
-};
-
-export const LocationCard: Story = {
-  args: {
-    name: "Sample Card",
-    category: Category.Location,
   },
 };
