@@ -11,7 +11,7 @@ const Header = ({ brand, links }: HeaderProps) => {
       <div>{brand}</div>
       <ul className="flex flex-between">
         {links.map((link) => (
-          <li className="list-style-none margin-small-h">
+          <li key={link.href} className="list-style-none margin-small-h">
             <a href={link.href} className="decoration-none">
               {link.text}
             </a>
