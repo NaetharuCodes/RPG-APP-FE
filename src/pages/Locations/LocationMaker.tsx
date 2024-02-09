@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { locationDataType } from "../../types/types";
 import { useForm } from "@mantine/form";
 import { Button, TextInput } from "@mantine/core";
@@ -17,10 +17,6 @@ const LocationMaker = () => {
       history: "",
     },
   });
-
-  useEffect(() => {
-    console.log(locationData);
-  }, [locationData]);
 
   const handleSubmit = (values: locationDataType) => {
     fetch("http://localhost:3000/api/location", {
