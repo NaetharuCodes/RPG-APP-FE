@@ -1,4 +1,4 @@
-import { Title, Grid, Group } from "@mantine/core";
+import { Title, Grid, Group, Input } from "@mantine/core";
 import { useState } from "react";
 import { Category } from "../../enums/categories";
 import ThumbnailCard from "../../components/ThumbnailCard/ThumbnailCard";
@@ -12,11 +12,17 @@ const Gallery = () => {
     location: true,
   });
 
+  const [filterString, setFilterString] = useState<string | null>(null);
+
   const handleToggleCategory = (category: Category): void => {
     setFilterCategories((prevCategories) => ({
       ...prevCategories,
       [category]: !prevCategories[category],
     }));
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilterString(e.target.value);
   };
 
   const dummyData = [
@@ -57,10 +63,12 @@ const Gallery = () => {
           status={filterCategories.location}
         />
       </Group>
+      <Input onChange={(e) => handleSearchChange(e)} />
 
       <Grid gutter="lg" justify="flex-start" align="flex-start">
         {dummyData.map((card) => {
           if (!filterCategories[card.category]) return;
+          if (filterString && !card.name.includes(filterString)) return;
           return (
             <ThumbnailCard
               key={card.id}
