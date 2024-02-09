@@ -16,6 +16,13 @@ export type locationDataType = {
   history: string;
 };
 
+export type itemDataType = {
+  theme: string;
+  name: string;
+  appearance: string;
+  history: string;
+};
+
 export type Link = {
   href: string;
   text: string;
