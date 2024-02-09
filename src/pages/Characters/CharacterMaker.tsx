@@ -1,27 +1,15 @@
 import { Button, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import CharacterSheet, {
-  characterDataType,
-} from "../../components/CharacterSheet/CharacterSheet";
+import CharacterSheet from "../../components/CharacterSheet/CharacterSheet";
 import { useState } from "react";
-
-interface CharacterFormData {
-  theme: string;
-  name: string;
-  species: string;
-  gender: string;
-  age: string;
-  role: string;
-  appearance: string;
-  history: string;
-}
+import { characterDataType } from "../../types/types";
 
 const CharacterMaker = () => {
   const [characterData, setCharacterData] = useState<characterDataType | null>(
     null
   );
 
-  const form = useForm<CharacterFormData>({
+  const form = useForm<characterDataType>({
     initialValues: {
       theme: "",
       name: "",
@@ -34,7 +22,7 @@ const CharacterMaker = () => {
     },
   });
 
-  const handleSubmit = (values: CharacterFormData) => {
+  const handleSubmit = (values: characterDataType) => {
     fetch("http://localhost:3000/api/character", {
       method: "POST",
       headers: {
