@@ -68,7 +68,11 @@ const Gallery = () => {
       <Grid gutter="lg" justify="flex-start" align="flex-start">
         {dummyData.map((card) => {
           if (!filterCategories[card.category]) return;
-          if (filterString && !card.name.includes(filterString)) return;
+          if (
+            filterString &&
+            !card.name.toLowerCase().includes(filterString.toLowerCase())
+          )
+            return;
           return (
             <ThumbnailCard
               key={card.id}
