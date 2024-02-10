@@ -1,8 +1,8 @@
-import { Link } from "../../types/types";
+import { linkType } from "../../types/types";
 
 interface HeaderProps {
   brand: string;
-  links: Link[];
+  links: linkType[];
 }
 
 const Header = ({ brand, links }: HeaderProps) => {
