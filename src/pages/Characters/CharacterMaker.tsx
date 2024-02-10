@@ -1,65 +1,65 @@
-import { Button, TextInput } from "@mantine/core";
-import { useForm } from "@mantine/form";
-import CharacterSheet from "../../components/CharacterSheet/CharacterSheet";
+import { Box, Image, Switch, Text, Title } from "@mantine/core";
 import { useState } from "react";
-import { characterDataType } from "../../types/types";
+import { MakerType } from "../../types/types";
+import bannerImage from "../../assets/RPG Scene 0003.webp";
+import { MakerOptions } from "../../enums/categories";
+import MakerForm from "../../components/MakerForm/MakerForm";
 
 const CharacterMaker = () => {
-  const [characterData, setCharacterData] = useState<characterDataType | null>(
-    null
-  );
-
-  const form = useForm<characterDataType>({
-    initialValues: {
-      theme: "",
-      name: "",
-      species: "",
-      gender: "",
-      age: "",
-      role: "",
-      appearance: "",
-      history: "",
-    },
+  const [makerMethod, setMakerMethod] = useState<MakerType>({
+    selection: MakerOptions.Manual,
   });
 
-  const handleSubmit = (values: characterDataType) => {
-    fetch("http://localhost:3000/api/character", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    })
-      .then((response) => response.json())
-      .then((data) => setCharacterData(data.characterData))
-      .catch((error) => console.error("Error: ", error));
+  const handleToggleMakerType = () => {
+    setMakerMethod(
+      makerMethod.selection == MakerOptions.Manual
+        ? { selection: MakerOptions.AI }
+        : { selection: MakerOptions.Manual }
+    );
   };
 
   return (
     <>
-      <h1>Character Maker Page</h1>
-      <p>
-        Fill out this form to have your character built. No need to add in all
-        the details now. Just fill out the parts you want and the AI will ad lib
-        the rest.
-      </p>
-      <form onSubmit={form.onSubmit((values) => handleSubmit(values))}>
-        <TextInput label="Theme" {...form.getInputProps("theme")} />
-        <TextInput label="Character Name" {...form.getInputProps("name")} />
-        <TextInput label="Species" {...form.getInputProps("species")} />
-        <TextInput label="Gender" {...form.getInputProps("gender")} />
-        <TextInput label="Age" {...form.getInputProps("age")} />
-        <TextInput label="Role" {...form.getInputProps("role")} />
-        <TextInput label="Appearance" {...form.getInputProps("appearance")} />
-        <TextInput label="History" {...form.getInputProps("history")} />
+      <Title className="margin-large text-justify">
+        Welcome to the Character Creator - Where Your Heroes Come to Life!
+      </Title>
+      <Image src={bannerImage} alt="cyberpunk-rpg-banner" height={180} />
+      <Text className="margin-large text-justify text-small">
+        Dive into the heart of your RPG adventures with our Character Creator, a
+        dynamic tool designed to breathe life into your imagination. Whether
+        you're crafting a valiant knight, a cunning sorcerer, or a rogue AI with
+        a heart of gold, this is where your journey begins.
+      </Text>
+      <Text className="margin-large text-justify text-small">
+        <strong>Craft Your Legend: </strong>
+        Choose the manual path to meticulously detail every aspect of your
+        character, from their backstory to their abilities. Perfect for those
+        who have a clear vision and wish to bring it to intricate life.
+      </Text>
+      <Text className="margin-large text-justify text-small">
+        <strong> Ignite Creativity with AI: </strong>
+        Embark on a voyage of discovery with our AI-driven creator. Generate a
+        character with a spark of AI ingenuity, then remix and refine to your
+        heart's content. It's ideal for when you're looking for inspiration or a
+        surprising twist to your narrative.
+      </Text>
 
-        <Button style={{ marginTop: 20 }} type="submit">
-          Submit
-        </Button>
-      </form>
-      <section>
-        {characterData && <CharacterSheet data={characterData} />}
-      </section>
+      <Box
+        role="div"
+        className="flex flex-center margin-large padding-large flex-col text-justify"
+      >
+        <Title order={6} className="margin-large">
+          Choose Your Creation Method
+        </Title>
+        <Switch
+          size="xl"
+          onLabel="AI"
+          offLabel="Manual"
+          onChange={() => handleToggleMakerType()}
+        />
+      </Box>
+
+      <MakerForm options={makerMethod.selection} />
     </>
   );
 };

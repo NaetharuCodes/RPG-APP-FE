@@ -1,4 +1,6 @@
-export type characterDataType = {
+import { MakerOptions } from "../enums/categories";
+
+export type CharacterDataType = {
   theme: string;
   name: string;
   species: string;
@@ -9,21 +11,25 @@ export type characterDataType = {
   history: string;
 };
 
-export type locationDataType = {
+export type LocationDataType = {
   theme: string;
   name: string;
   appearance: string;
   history: string;
 };
 
-export type itemDataType = {
+export type ItemDataType = {
   theme: string;
   name: string;
   appearance: string;
   history: string;
 };
 
-export type Link = {
+export type LinkType = {
   href: string;
   text: string;
+};
+
+export type MakerType = {
+  selection: MakerOptions;
 };

@@ -1,9 +1,9 @@
 import { Box, Text, Title } from "@mantine/core";
 import "./CharacterSheet.css";
-import { characterDataType } from "../../types/types";
+import { CharacterDataType } from "../../types/types";
 
 interface CharacterSheetProps {
-  data: characterDataType;
+  data: CharacterDataType;
 }
 
 const CharacterSheet = ({
